@@ -70,7 +70,6 @@ public class OXQuizController {
     @GetMapping("play")
     public String play(Model model){
         QuizDto dto = oxQuizService.playQuiz();
-        log.info(dto.toString());
         model.addAttribute("dto",dto);
         return "play";
     }

@@ -10,4 +10,6 @@ public class Quiz {
     @Column(length = 100,nullable = false) private String quiz;
     @Column(nullable = false) private String answer;
     @Column(length = 20,nullable = false) private String Writer;
+
+
 }

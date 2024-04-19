@@ -43,10 +43,7 @@ public class OXQuizService {
     }
 
     public QuizDto playQuiz() {
-        List<QuizDto> dtos = showList();
-        System.out.println(dtos);
-        QuizDto dto =  dtos.get(random.nextInt((int) dtos.stream().count()));
-        System.out.println(dto);
-        return dto;
+        return QuizDto.fromQuiz(oxQuizRepositary.random());
     }
+
 }
