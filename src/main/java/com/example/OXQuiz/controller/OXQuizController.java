@@ -35,7 +35,7 @@ public class OXQuizController {
         model.addAttribute("dto", new QuizDto());
         log.info(dto.toString());
         oxQuizService.submitQuiz(dto);
-        return "submitForm";
+        return "redirect:/quiz";
     }
 
     @GetMapping("")
@@ -69,9 +69,14 @@ public class OXQuizController {
     }
     @GetMapping("play")
     public String play(Model model){
-        QuizDto dto = oxQuizService.playQuiz();
-        model.addAttribute("dto",dto);
-        return "play";
+        try{
+            QuizDto dto = oxQuizService.playQuiz();
+            model.addAttribute("dto",dto);
+            return "play";
+        }catch (Exception e){
+            model.addAttribute("text","등록된 문제가 없습니다");
+            return "check";
+        }
     }
     @PostMapping("check")
     public String check(@RequestParam("answer")String answer,
